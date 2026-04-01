@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technology News Portal - Latest updates in AI, Web Development, and Software Engineering">
+    <meta name="keywords" content="technology, news, AI, web development, programming">
+    <meta name="author" content="Tech News Team">
+    <title>TechNews - Your Daily Technology Insights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header h1 {
+            font-size: 1.8em;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ecf0f1;
+            border-bottom: 2px solid white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        main {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        figure {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4em;
+            margin: 0;
+        }
+        
+        figcaption {
+            padding: 10px;
+            background-color: #f0f0f0;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+        
+        article h2 {
+            padding: 20px 20px 0 20px;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        
+        article .meta {
+            padding: 0 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .time {
+            background-color: #ecf0f1;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+        
+        article p {
+            padding: 0 20px;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .read-more {
+            padding: 0 20px 20px 20px;
+        }
+        
+        .read-more a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+        
+        .read-more a:hover {
+            border-bottom-color: #667eea;
+        }
+        
+        aside {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        aside h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        aside ul {
+            list-style: none;
+        }
+        
+        aside li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        aside a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        aside a:hover {
+            color: #667eea;
+            margin-left: 5px;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #667eea;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+        
+        .breadcrumb {
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            aside {
+                position: static;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <h1>🚀 TechNews</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#article1">Latest</a></li>
+                <li><a href="#article2">Technology</a></li>
+                <li><a href="#article3">Web Dev</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb">
+            <a href="#home">Home</a> > 
+            <a href="#news">News</a> > 
+            <span>Technology</span>
+        </nav>
+        
+        <main>
+            <!-- Primary Content Area -->
+            <section>
+                <!-- Article 1 -->
+                <article id="article1">
+                    <figure>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='80' text-anchor='middle' dominant-baseline='middle' fill='white'%3E🤖%3C/text%3E%3C/svg%3E" alt="AI Illustration">
+                        <figcaption>Artificial Intelligence Technology</figcaption>
+                    </figure>
+                    <h2>The Future of Artificial Intelligence in 2025</h2>
+                    <div class="meta">
+                        By <strong>Sarah Johnson</strong> | 
+                        <time class="time" datetime="2025-02-15">February 15, 2025</time>
+                    </div>
+                    <p>
+                        Artificial Intelligence continues to revolutionize industries worldwide. From machine learning models that can understand human language with unprecedented accuracy to AI systems that generate creative content, 2025 marks a pivotal moment in technology evolution. Companies are investing billions in AI research, and governments are establishing frameworks for responsible AI development.
+                    </p>
+                    <p>
+                        The integration of AI in healthcare is saving lives by enabling early disease detection, while in finance, AI algorithms are managing complex portfolios with remarkable precision. Education is being transformed with personalized learning experiences powered by intelligent tutoring systems.
+                    </p>
+                    <div class="read-more">
+                        <a href="#read-more-ai">Read Full Article →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article id="article2">
+                    <figure>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='80' text-anchor='middle' dominant-baseline='middle' fill='white'%3E💻%3C/text%3E%3C/svg%3E" alt="Web Development">
+                        <figcaption>Web Development Trends</figcaption>
+                    </figure>
+                    <h2>Modern Web Development: Frameworks That Are Changing the Game</h2>
+                    <div class="meta">
+                        By <strong>Michael Chen</strong> | 
+                        <time class="time" datetime="2025-02-13">February 13, 2025</time>
+                    </div>
+                    <p>
+                        The web development landscape is evolving rapidly with new frameworks and technologies emerging regularly. React, Vue.js, and Angular continue to dominate, but developers are increasingly exploring alternatives like Svelte and Astro that promise better performance and developer experience.
+                    </p>
+                    <p>
+                        The adoption of TypeScript has become mainstream, with most new projects leveraging its type-safety benefits. Full-stack frameworks like Next.js and Remix are gaining traction by providing seamless integration between frontend and backend development. Edge computing and serverless architectures are reshaping how we think about web application deployment.
+                    </p>
+                    <div class="read-more">
+                        <a href="#read-more-web">Read Full Article →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article id="article3">
+                    <figure>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='80' text-anchor='middle' dominant-baseline='middle' fill='white'%3E🔐%3C/text%3E%3C/svg%3E" alt="Cybersecurity">
+                        <figcaption>Cybersecurity Innovation</figcaption>
+                    </figure>
+                    <h2>Cybersecurity: Protecting the Digital Future</h2>
+                    <div class="meta">
+                        By <strong>David Williams</strong> | 
+                        <time class="time" datetime="2025-02-10">February 10, 2025</time>
+                    </div>
+                    <p>
+                        As digital threats evolve, cybersecurity measures must adapt accordingly. Organizations are investing heavily in zero-trust security architectures, where every access attempt is verified regardless of its origin. The rise of quantum computing threatens existing encryption methods, spurring development of quantum-resistant algorithms.
+                    </p>
+                    <p>
+                        Multi-factor authentication, behavioral analytics, and AI-powered threat detection have become essential components of modern security infrastructure. Developers are now required to embed security practices from the beginning of the development lifecycle, marking the rise of DevSecOps methodologies.
+                    </p>
+                    <div class="read-more">
+                        <a href="#read-more-security">Read Full Article →</a>
+                    </div>
+                </article>
+            </section>
+            
+            <!-- Sidebar -->
+            <aside>
+                <h3>📌 Popular Topics</h3>
+                <ul>
+                    <li><a href="#ai">Artificial Intelligence</a></li>
+                    <li><a href="#web">Web Development</a></li>
+                    <li><a href="#security">Cybersecurity</a></li>
+                    <li><a href="#cloud">Cloud Computing</a></li>
+                    <li><a href="#mobile">Mobile Development</a></li>
+                    <li><a href="#devops">DevOps</a></li>
+                </ul>
+                
+                <h3 style="margin-top: 30px;">🔔 Recent Updates</h3>
+                <ul>
+                    <li><a href="#update1">New Python 3.13 Released</a></li>
+                    <li><a href="#update2">React 19 Beta Available</a></li>
+                    <li><a href="#update3">GitHub Copilot Updates</a></li>
+                    <li><a href="#update4">VS Code 1.96 Announcement</a></li>
+                </ul>
+            </aside>
+        </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <section class="footer-section">
+                <h4>About TechNews</h4>
+                <p>Your daily source for technology news, insights, and trends. Keeping developers and tech enthusiasts informed.</p>
+            </section>
+            <section class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </section>
+            <section class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#twitter">Twitter</a></li>
+                    <li><a href="#linkedin">LinkedIn</a></li>
+                    <li><a href="#github">GitHub</a></li>
+                    <li><a href="#youtube">YouTube</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 TechNews. All rights reserved. | Built with HTML5 Semantic Elements</p>
+        </div>
+    </footer>
+</body>
+</html>

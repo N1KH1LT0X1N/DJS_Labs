@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+            background-color: #f9f9f9;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            max-height: 200px;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .radio-option,
+        .checkbox-option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .radio-option label,
+        .checkbox-option label {
+            margin-bottom: 0;
+            font-weight: normal;
+            margin: 0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        button[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button[type="reset"] {
+            background-color: #95a5a6;
+            color: white;
+        }
+        
+        button[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f5c6cb;
+        }
+        
+        .form-full {
+            grid-column: 1 / -1;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Student Registration</h1>
+        
+        <div class="success-message" id="successMessage">
+            ✓ Registration submitted successfully! Your data has been saved.
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            ✗ Please fill out all required fields correctly.
+        </div>
+        
+        <form id="registrationForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digits" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dob">Date of Birth <span class="required">*</span></label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="regNo">Registration Number <span class="required">*</span></label>
+                    <input type="text" id="regNo" name="regNo" placeholder="e.g., D095" required>
+                </div>
+            </div>
+            
+            <div class="form-group form-full">
+                <label>Gender <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="female" name="gender" value="Female" required>
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="other" name="gender" value="Other" required>
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group form-full">
+                <label for="address">Address <span class="required">*</span></label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            
+            <div class="form-group form-full">
+                <label for="city">City <span class="required">*</span></label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="course">Course <span class="required">*</span></label>
+                    <select id="course" name="course" required>
+                        <option value="">Select Course</option>
+                        <option value="B.Tech CS">B.Tech Computer Science</option>
+                        <option value="B.Tech IT">B.Tech Information Technology</option>
+                        <option value="B.Tech ECE">B.Tech Electronics</option>
+                        <option value="B.Tech Mechanical">B.Tech Mechanical</option>
+                        <option value="BCA">BCA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="semester">Semester <span class="required">*</span></label>
+                    <select id="semester" name="semester" required>
+                        <option value="">Select Semester</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group form-full">
+                <label>Hobbies & Interests</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="reading" name="hobbies" value="Reading">
+                        <label for="reading">Reading</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="sports" name="hobbies" value="Sports">
+                        <label for="sports">Sports</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="gaming" name="hobbies" value="Gaming">
+                        <label for="gaming">Gaming</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="music" name="hobbies" value="Music">
+                        <label for="music">Music</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="art" name="hobbies" value="Art">
+                        <label for="art">Art</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="coding" name="hobbies" value="Coding">
+                        <label for="coding">Coding</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group form-full">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">I agree to the terms and conditions <span class="required">*</span></label>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dob: document.getElementById('dob').value,
+                regNo: document.getElementById('regNo').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                course: document.getElementById('course').value,
+                semester: document.getElementById('semester').value,
+                hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(x => x.value),
+                submissionTime: new Date().toLocaleString()
+            };
+            
+            // Save to localStorage
+            const registrations = JSON.parse(localStorage.getItem('studentRegistrations')) || [];
+            registrations.push(formData);
+            localStorage.setItem('studentRegistrations', JSON.stringify(registrations));
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Log data
+            console.log('Registration Data:', formData);
+            console.log('Total Registrations:', registrations.length);
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                form.reset();
+                successMessage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

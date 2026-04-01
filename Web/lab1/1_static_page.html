@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our College Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            color: #ecf0f1;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 10px 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background-color: #2c3e50;
+            border-radius: 3px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .feature-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box p {
+            color: #666;
+        }
+        
+        .about {
+            background-color: #f8f9fa;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 5px;
+        }
+        
+        .about h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .about p {
+            margin: 15px 0;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Institute of Education Excellence</h1>
+        <p>Building Future Leaders Through Quality Education</p>
+    </header>
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h2>Your Journey to Success Starts Here</h2>
+            <p>Join thousands of students who have achieved their dreams through our comprehensive educational programs.</p>
+        </div>
+        
+        <section class="features">
+            <div class="feature-box">
+                <h3>Expert Faculty</h3>
+                <p>Learn from industry experts with decades of experience in their respective fields.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Modern Infrastructure</h3>
+                <p>State-of-the-art facilities and cutting-edge technology for optimal learning experience.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Global Recognition</h3>
+                <p>Our degrees are recognized and respected worldwide by leading organizations.</p>
+            </div>
+        </section>
+        
+        <section id="about" class="about">
+            <h2>About Our Institution</h2>
+            <p>
+                The Institute of Education Excellence is committed to providing world-class education that prepares students 
+                for the challenges and opportunities of the 21st century. With a strong emphasis on academic excellence, 
+                research, and innovation, we strive to develop well-rounded individuals who can make a positive impact on society.
+            </p>
+            <p>
+                Our comprehensive curriculum, combined with hands-on learning experiences and industry partnerships, 
+                ensures that our graduates are well-prepared for successful careers in their chosen fields. We believe in 
+                fostering a culture of continuous learning and intellectual growth among our students and faculty.
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Institute of Education Excellence. All rights reserved.</p>
+    </footer>
+</body>
+</html>

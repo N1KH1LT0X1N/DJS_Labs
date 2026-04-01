@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable - Semester IV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .timetable-wrapper {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            font-size: 1.05em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+        
+        tbody tr {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #f0f0f0;
+            transition: 0.3s ease;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        
+        .time-slot {
+            background-color: #e8f4f8;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .break {
+            background-color: #ffeaa7 !important;
+            font-weight: bold;
+            color: #d63031;
+        }
+        
+        .lab {
+            background-color: #dfe6e9;
+        }
+        
+        .lecture {
+            background-color: #e8f5e9;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+        
+        .legend-1 {
+            background-color: #e8f5e9;
+        }
+        
+        .legend-2 {
+            background-color: #dfe6e9;
+        }
+        
+        .legend-3 {
+            background-color: #ffeaa7;
+        }
+        
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .info-box p {
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            th, td {
+                padding: 8px 5px;
+                font-size: 0.85em;
+            }
+            
+            .legend {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📅 Class Timetable</h1>
+        <p class="subtitle">Semester IV - B.Tech Computer Science (2024-2025)</p>
+        
+        <div class="info-box">
+            <h3>📌 Important Notice</h3>
+            <p>Classes will be conducted from 9:00 AM to 5:00 PM with 1-hour lunch break (1:00 PM - 2:00 PM). Laboratory sessions are on scheduled days. Please report 5 minutes before the scheduled time.</p>
+        </div>
+        
+        <div class="timetable-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time-slot">9:00 - 10:00</td>
+                        <td class="lecture">Data Structures</td>
+                        <td class="lecture">Database Management</td>
+                        <td class="lecture">Data Structures</td>
+                        <td class="lecture">Web Technologies</td>
+                        <td class="lecture">Software Engineering</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">10:00 - 11:00</td>
+                        <td class="lecture">Discrete Mathematics</td>
+                        <td class="lecture">Web Technologies</td>
+                        <td class="lecture">Database Management</td>
+                        <td class="lecture">Discrete Mathematics</td>
+                        <td class="lecture">Data Structures</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">11:00 - 12:00</td>
+                        <td class="lab">Data Structures Lab</td>
+                        <td class="lecture">Software Engineering</td>
+                        <td class="lab">Web Technologies Lab</td>
+                        <td class="lab">Database Lab</td>
+                        <td class="lecture">Discrete Mathematics</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">12:00 - 1:00</td>
+                        <td class="lecture">Web Technologies</td>
+                        <td class="lab">Discrete Math Lab</td>
+                        <td class="lecture">Software Engineering</td>
+                        <td class="lecture">Data Structures</td>
+                        <td class="lab">Software Eng. Lab</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot break">1:00 - 2:00</td>
+                        <td class="break">LUNCH BREAK</td>
+                        <td class="break">LUNCH BREAK</td>
+                        <td class="break">LUNCH BREAK</td>
+                        <td class="break">LUNCH BREAK</td>
+                        <td class="break">LUNCH BREAK</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">2:00 - 3:00</td>
+                        <td class="lecture">Database Management</td>
+                        <td class="lecture">Data Structures</td>
+                        <td class="lecture">Web Technologies</td>
+                        <td class="lab">Web Technologies Lab</td>
+                        <td class="lecture">Database Management</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">3:00 - 4:00</td>
+                        <td class="lab">Database Lab</td>
+                        <td class="lecture">Software Engineering</td>
+                        <td class="lab">Software Eng. Lab</td>
+                        <td class="lecture">Discrete Mathematics</td>
+                        <td class="lab">Database Lab</td>
+                    </tr>
+                    <tr>
+                        <td class="time-slot">4:00 - 5:00</td>
+                        <td class="lecture">Software Engineering</td>
+                        <td class="lab">Database Lab</td>
+                        <td class="lecture">Discrete Mathematics</td>
+                        <td class="lecture">Web Technologies</td>
+                        <td class="lecture">Software Engineering</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color legend-1"></div>
+                <span><strong>Lecture Sessions</strong></span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-2"></div>
+                <span><strong>Laboratory Sessions</strong></span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-3"></div>
+                <span><strong>Break Time</strong></span>
+            </div>
+        </div>
+        
+        <div class="info-box" style="margin-top: 20px;">
+            <h3>📚 Course Details</h3>
+            <p><strong>Instructors:</strong> Data Structures (Dr. Sharma), Database Management (Prof. Verma), Web Technologies (Dr. Patel), 
+            Discrete Mathematics (Prof. Singh), Software Engineering (Dr. Gupta)</p>
+            <p><strong>Lab Slots:</strong> Each lab session is 1 hour. Maximum 2 students per system. Attendance is mandatory.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+====================================
+EXPERIMENT 6: SEARCHING AND SORTING
+====================================
+
+Number of elements: 5
+Input Array: 50 30 90 10 70 
+
+--- LINEAR SEARCH ---
+Searching for value: 50
+Element found at position: 1 (index: 0)
+
+=== SORTING ARRAY FOR BINARY SEARCH ===
+
+--- BUBBLE SORT ---
+Original Array: 50 30 90 10 70 
+Pass 1: 10 50 30 90 70 
+Pass 2: 10 30 50 70 90 
+Pass 3: 10 30 50 70 90 
+Pass 4: 10 30 50 70 90 
+Sorted Array: 10 30 50 70 90 
+
+--- BINARY SEARCH ---
+Searching for value: 20
+Checking mid position: 2, value: 50
+Checking mid position: 0, value: 10
+Checking mid position: 1, value: 30
+Element not found in the array
+
+====================================
+ANALYSIS OF TIME COMPLEXITY:
+====================================
+Linear Search:  O(n)
+Binary Search:  O(log n)
+Bubble Sort:    O(n^2)
+
+====================================
+CONCLUSION:
+Thus we have successfully implemented
+linear and binary searching techniques
+and bubble sorting.
+====================================

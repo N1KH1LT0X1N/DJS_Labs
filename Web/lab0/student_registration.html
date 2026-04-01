@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        marquee {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border: 1px solid #666;
+        }
+        
+        .container {
+            max-width: 600px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 30px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 22px;
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 4px;
+            color: #333;
+            font-size: 13px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #999;
+            font-size: 13px;
+            font-family: Verdana, Arial, sans-serif;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: 1px solid #333;
+            background-color: #ffffcc;
+        }
+        
+        textarea {
+            resize: none;
+            height: 70px;
+        }
+        
+        .gender-group {
+            margin-top: 5px;
+        }
+        
+        .radio-option {
+            margin-bottom: 6px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        .checkbox-group {
+            margin-top: 5px;
+        }
+        
+        .checkbox-option {
+            margin-bottom: 6px;
+        }
+        
+        button {
+            width: auto;
+            padding: 8px 20px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #000;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<body>
+    <marquee>Student Registration Form</marquee>
+    
+    <div class="container">
+        <h1>Registration</h1>
+        
+        <form id="registrationForm" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="gender-group">
+                    <div class="radio-option">
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="female" name="gender" value="Female" required>
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="other" name="gender" value="Other" required>
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Favorite Hobbies:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="reading" name="hobbies" value="Reading">
+                        <label for="reading">Reading</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="sports" name="hobbies" value="Sports">
+                        <label for="sports">Sports</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="gaming" name="hobbies" value="Gaming">
+                        <label for="gaming">Gaming</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="music" name="hobbies" value="Music">
+                        <label for="music">Music</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="art" name="hobbies" value="Art">
+                        <label for="art">Art</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="coding" name="hobbies" value="Coding">
+                        <label for="coding">Coding</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div id="successMessage" style="display:none; margin-top: 20px; padding: 15px; background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; border-radius: 3px;">
+            <strong>Success!</strong> Your registration has been submitted.
+        </div>
+    </div>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            var formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                dob: document.getElementById('dob').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(x => x.value)
+            };
+            
+            localStorage.setItem('studentRegistration', JSON.stringify(formData));
+            
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            console.log('Registration submitted:', formData);
+        }
+    </script>
+</body>
+</html>

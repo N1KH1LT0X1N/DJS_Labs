@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Showcase - Modern Web Design</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+        
+        .btn-custom {
+            padding: 12px 35px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            border-radius: 10px;
+            background: white;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h5 {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 4px solid #667eea;
+        }
+        
+        .team-member h5 {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .testimony-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-section {
+            padding: 80px 0;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .price-card.featured {
+            border-top-color: #764ba2;
+            position: relative;
+            top: -20px;
+        }
+        
+        .price-card.featured .badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #764ba2;
+            padding: 8px 20px;
+        }
+        
+        .price {
+            font-size: 2.5em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 0.4em;
+            color: #999;
+        }
+        
+        .features-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .features-list i {
+            color: #667eea;
+            margin-right: 10px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            color: #999;
+            margin-top: 10px;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-rocket"></i> BootstrapPro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to Bootstrap 5</h1>
+            <p>Build responsive, modern websites with the world's most popular CSS framework</p>
+            <button class="btn btn-light btn-custom">Get Started</button>
+            <button class="btn btn-outline-light btn-custom ms-2">Learn More</button>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="container py-5">
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Happy Users</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5em; color: #667eea;">Why Choose Our Services?</h2>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h5>Responsive Design</h5>
+                        <p>Looks great on all devices: desktop, tablet, and mobile phones.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h5>Lightning Fast</h5>
+                        <p>Optimized performance with fast loading times and smooth interactions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                        <h5>Beautiful UI</h5>
+                        <p>Modern design with pre-built components and customizable themes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-code"></i></div>
+                        <h5>Easy to Code</h5>
+                        <p>Simple, clean, and well-documented code for quick development.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                        <h5>Secure</h5>
+                        <p>Built with security best practices and regularly updated.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h5>Community Support</h5>
+                        <p>Large community with tons of resources and third-party plugins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5em; color: #667eea;">Meet Our Team</h2>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="team-member">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle fill='%23667eea' cx='100' cy='100' r='100'/%3E%3Ctext x='100' y='100' font-size='100' text-anchor='middle' dominant-baseline='middle' fill='white'%3E👨%3C/text%3E%3C/svg%3E" alt="Team Member">
+                        <h5>John Doe</h5>
+                        <p class="text-muted">Lead Designer</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="team-member">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle fill='%23764ba2' cx='100' cy='100' r='100'/%3E%3Ctext x='100' y='100' font-size='100' text-anchor='middle' dominant-baseline='middle' fill='white'%3E👩%3C/text%3E%3C/svg%3E" alt="Team Member">
+                        <h5>Sarah Smith</h5>
+                        <p class="text-muted">Lead Developer</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="team-member">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle fill='%23ff6b9d' cx='100' cy='100' r='100'/%3E%3Ctext x='100' y='100' font-size='100' text-anchor='middle' dominant-baseline='middle' fill='white'%3E👨%3C/text%3E%3C/svg%3E" alt="Team Member">
+                        <h5>Mike Johnson</h5>
+                        <p class="text-muted">Project Manager</p>
+                        <div class="social-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimony-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5em; color: #667eea;">What Clients Say</h2>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Outstanding service and incredible support from start to finish!"</p>
+                        <strong>- Alex Williams</strong>
+                        <p class="text-muted small">CEO, Tech Startup</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The team delivered exactly what we needed on time and within budget."</p>
+                        <strong>- Emily Davis</strong>
+                        <p class="text-muted small">Marketing Director</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Professional, reliable, and truly committed to our success!"</p>
+                        <strong>- James Martinez</strong>
+                        <p class="text-muted small">Founder, E-Commerce Co</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5em; color: #667eea;">Pricing Plans</h2>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="price-card">
+                        <h5>Starter</h5>
+                        <div class="price">$29<small>/month</small></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 5 Projects</li>
+                            <li><i class="fas fa-check"></i> 10GB Storage</li>
+                            <li><i class="fas fa-check"></i> Basic Support</li>
+                            <li><i class="fas fa-times" style="color: #ccc;"></i> Analytics</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100">Choose Plan</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="price-card featured">
+                        <span class="badge">Popular</span>
+                        <h5>Professional</h5>
+                        <div class="price">$99<small>/month</small></div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Unlimited Projects</li>
+                            <li><i class="fas fa-check"></i> 100GB Storage</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Analytics Dashboard</li>
+                        </ul>
+                        <button class="btn btn-primary w-100">Choose Plan</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="price-card">
+                        <h5>Enterprise</h5>
+                        <div class="price">Custom</div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Unlimited Everything</li>
+                            <li><i class="fas fa-check"></i> 1TB Storage</li>
+                            <li><i class="fas fa-check"></i> 24/7 Dedicated Support</li>
+                            <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p class="lead mb-4">Join thousands of satisfied customers using Bootstrap</p>
+            <button class="btn btn-light btn-custom">Sign Up Now</button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 col-lg-3">
+                    <h6>About</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <h6>Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <h6>Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <h6>Social</h6>
+                    <a href="#" class="btn-link me-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="btn-link me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="btn-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2024 BootstrapPro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

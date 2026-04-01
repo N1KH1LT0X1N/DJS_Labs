@@ -1,0 +1,23 @@
+{
+  "model_name": "Gradient Boosting",
+  "features": [
+    "Item_Encoded",
+    "Price Per Unit",
+    "Payment Method_Encoded",
+    "Location_Encoded",
+    "Month",
+    "Day_of_Month",
+    "Month Name_Encoded",
+    "Day of Week_Encoded",
+    "Quarter",
+    "Is_Weekend",
+    "Week_of_Year"
+  ],
+  "performance": {
+    "test_r2": -0.19952310648797167,
+    "test_mae": 1.2716767658909711,
+    "test_rmse": 1.500003975825487
+  },
+  "date_trained": "2026-01-28",
+  "notes": "Gradient Boosting model predicts all 5 quantity values (1-5). Includes Price Per Unit as feature."
+}

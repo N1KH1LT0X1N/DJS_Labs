@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #3498db;
+            font-weight: bold;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .error {
+            background-color: #fadbd8;
+            color: #c0392b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            border-left: 4px solid #c0392b;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .data-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .data-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .data-card h3 {
+            margin-bottom: 10px;
+            color: #fff;
+            word-wrap: break-word;
+        }
+
+        .data-card p {
+            margin: 8px 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .data-card .property {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .data-card .value {
+            color: #ecf0f1;
+            margin-left: 5px;
+        }
+
+        .list-view {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .list-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .list-item-title {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .list-item-email {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .info-box {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #155724;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .toggle-view {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .toggle-view button {
+            flex: 1;
+            max-width: 150px;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+
+        .toggle-view button.active {
+            background-color: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .data-container {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fetch Data from an API Using the Fetch API in JavaScript</h1>
+        
+        <div class="button-group">
+            <button onclick="fetchUserData()">Load User Data</button>
+            <button onclick="fetchPostData()">Load Post Data</button>
+            <button onclick="fetchCommentData()">Load Comments</button>
+            <button onclick="clearData()">Clear Data</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading data...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="toggle-view" id="toggleView" style="display: none;">
+            <button class="active" onclick="toggleViewMode('grid')">Grid View</button>
+            <button onclick="toggleViewMode('list')">List View</button>
+        </div>
+
+        <div id="dataContainer">
+            <div class="info-box">
+                <strong>👋 Welcome!</strong>
+                Click any of the buttons above to fetch data from a public API. This demonstrates using JavaScript Fetch API to retrieve data asynchronously.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentViewMode = 'grid';
+        let currentData = [];
+        let currentDataType = '';
+
+        const API_URLS = {
+            users: 'https://jsonplaceholder.typicode.com/users',
+            posts: 'https://jsonplaceholder.typicode.com/posts',
+            comments: 'https://jsonplaceholder.typicode.com/comments'
+        };
+
+        function showLoading() {
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('error').classList.remove('show');
+            document.getElementById('dataContainer').innerHTML = '';
+            document.getElementById('toggleView').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('show');
+        }
+
+        function showError(message) {
+            const errorBox = document.getElementById('error');
+            errorBox.textContent = '❌ Error: ' + message;
+            errorBox.classList.add('show');
+            hideLoading();
+        }
+
+        function fetchUserData() {
+            showLoading();
+            fetch(API_URLS.users)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch user data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    currentData = data.slice(0, 6); // Limit to 6 users
+                    currentDataType = 'users';
+                    displayUserData(currentData);
+                    hideLoading();
+                    document.getElementById('toggleView').style.display = 'flex';
+                })
+                .catch(error => {
+                    showError(error.message);
+                });
+        }
+
+        function fetchPostData() {
+            showLoading();
+            fetch(API_URLS.posts)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch post data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    currentData = data.slice(0, 9); // Limit to 9 posts
+                    currentDataType = 'posts';
+                    displayPostData(currentData);
+                    hideLoading();
+                    document.getElementById('toggleView').style.display = 'flex';
+                })
+                .catch(error => {
+                    showError(error.message);
+                });
+        }
+
+        function fetchCommentData() {
+            showLoading();
+            fetch(API_URLS.comments)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch comment data');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    currentData = data.slice(0, 10); // Limit to 10 comments
+                    currentDataType = 'comments';
+                    displayCommentData(currentData);
+                    hideLoading();
+                    document.getElementById('toggleView').style.display = 'flex';
+                })
+                .catch(error => {
+                    showError(error.message);
+                });
+        }
+
+        function displayUserData(users) {
+            const container = document.getElementById('dataContainer');
+            
+            if (currentViewMode === 'grid') {
+                container.innerHTML = '<div class="data-container">' +
+                    users.map(user => `
+                        <div class="data-card">
+                            <h3>${user.name}</h3>
+                            <p><span class="property">Email:</span><span class="value">${user.email}</span></p>
+                            <p><span class="property">Phone:</span><span class="value">${user.phone}</span></p>
+                            <p><span class="property">Company:</span><span class="value">${user.company.name}</span></p>
+                            <p><span class="property">Website:</span><span class="value">${user.website}</span></p>
+                        </div>
+                    `).join('') + '</div>';
+            } else {
+                container.innerHTML = '<div class="list-view">' +
+                    users.map(user => `
+                        <div class="list-item">
+                            <div>
+                                <div class="list-item-title">${user.name}</div>
+                                <div class="list-item-email">${user.email}</div>
+                            </div>
+                            <div class="list-item-email">${user.phone}</div>
+                        </div>
+                    `).join('') + '</div>';
+            }
+        }
+
+        function displayPostData(posts) {
+            const container = document.getElementById('dataContainer');
+            
+            if (currentViewMode === 'grid') {
+                container.innerHTML = '<div class="data-container">' +
+                    posts.map(post => `
+                        <div class="data-card">
+                            <h3>${post.title}</h3>
+                            <p><span class="property">User ID:</span><span class="value">${post.userId}</span></p>
+                            <p><span class="property">Content:</span><span class="value">${post.body.substring(0, 100)}...</span></p>
+                        </div>
+                    `).join('') + '</div>';
+            } else {
+                container.innerHTML = '<div class="list-view">' +
+                    posts.map(post => `
+                        <div class="list-item">
+                            <div>
+                                <div class="list-item-title">${post.title}</div>
+                                <div class="list-item-email">${post.body.substring(0, 80)}...</div>
+                            </div>
+                        </div>
+                    `).join('') + '</div>';
+            }
+        }
+
+        function displayCommentData(comments) {
+            const container = document.getElementById('dataContainer');
+            
+            if (currentViewMode === 'grid') {
+                container.innerHTML = '<div class="data-container">' +
+                    comments.map(comment => `
+                        <div class="data-card">
+                            <h3>${comment.name}</h3>
+                            <p><span class="property">Email:</span><span class="value">${comment.email}</span></p>
+                            <p><span class="property">Comment:</span><span class="value">${comment.body.substring(0, 100)}...</span></p>
+                        </div>
+                    `).join('') + '</div>';
+            } else {
+                container.innerHTML = '<div class="list-view">' +
+                    comments.map(comment => `
+                        <div class="list-item">
+                            <div>
+                                <div class="list-item-title">${comment.name}</div>
+                                <div class="list-item-email">${comment.email}</div>
+                            </div>
+                        </div>
+                    `).join('') + '</div>';
+            }
+        }
+
+        function toggleViewMode(mode) {
+            currentViewMode = mode;
+            
+            // Update button styles
+            document.querySelectorAll('.toggle-view button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Re-display data with new view mode
+            if (currentDataType === 'users') {
+                displayUserData(currentData);
+            } else if (currentDataType === 'posts') {
+                displayPostData(currentData);
+            } else if (currentDataType === 'comments') {
+                displayCommentData(currentData);
+            }
+        }
+
+        function clearData() {
+            document.getElementById('dataContainer').innerHTML = `
+                <div class="info-box">
+                    <strong>👋 Welcome!</strong>
+                    Click any of the buttons above to fetch data from a public API. This demonstrates using JavaScript Fetch API to retrieve data asynchronously.
+                </div>
+            `;
+            document.getElementById('toggleView').style.display = 'none';
+            document.getElementById('error').classList.remove('show');
+            currentData = [];
+            currentDataType = '';
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '1') fetchUserData();
+            if (e.key === '2') fetchPostData();
+            if (e.key === '3') fetchCommentData();
+            if (e.key === 'c' || e.key === 'C') clearData();
+        });
+    </script>
+</body>
+</html>

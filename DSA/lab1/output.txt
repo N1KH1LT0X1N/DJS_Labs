@@ -1,0 +1,209 @@
+﻿========================================
+  SORTING ALGORITHM PERFORMANCE ANALYSIS
+  Selection Sort vs Quick Sort
+========================================
+
+
++============================================+
+|          SIZE: 100 ELEMENTS              |
++============================================+
+
+=== Test Case: Random (Size: 100) ===
+
+Selection Sort:
+  Time: 0.0000 ms
+  Comparisons: 4950
+  Swaps: 93
+  Sorted: YES
+
+Quick Sort:
+  Time: 0.0000 ms
+  Comparisons: 758
+  Swaps: 427
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: -nan(ind)x (Quick Sort is -nan(ind)x slower)
+
+=== Test Case: Best Case (Size: 100) ===
+
+Selection Sort:
+  Time: 0.0000 ms
+  Comparisons: 4950
+  Swaps: 0
+  Sorted: YES
+
+Quick Sort:
+  Time: 0.0000 ms
+  Comparisons: 4950
+  Swaps: 5049
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: -nan(ind)x (Quick Sort is -nan(ind)x slower)
+
+=== Test Case: Worst Case (Size: 100) ===
+
+Selection Sort:
+  Time: 0.0000 ms
+  Comparisons: 4950
+  Swaps: 50
+  Sorted: YES
+
+Quick Sort:
+  Time: 0.0000 ms
+  Comparisons: 4950
+  Swaps: 2549
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: -nan(ind)x (Quick Sort is -nan(ind)x slower)
+
+
++============================================+
+|          SIZE: 1000 ELEMENTS              |
++============================================+
+
+=== Test Case: Random (Size: 1000) ===
+
+Selection Sort:
+  Time: 1.0000 ms
+  Comparisons: 499500
+  Swaps: 994
+  Sorted: YES
+
+Quick Sort:
+  Time: 0.0000 ms
+  Comparisons: 11100
+  Swaps: 6444
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: infx (Quick Sort is infx faster)
+
+=== Test Case: Best Case (Size: 1000) ===
+
+Selection Sort:
+  Time: 1.0000 ms
+  Comparisons: 499500
+  Swaps: 0
+  Sorted: YES
+
+Quick Sort:
+  Time: 3.0000 ms
+  Comparisons: 499500
+  Swaps: 500499
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: 0.33x (Quick Sort is 0.33x slower)
+
+=== Test Case: Worst Case (Size: 1000) ===
+
+Selection Sort:
+  Time: 1.0000 ms
+  Comparisons: 499500
+  Swaps: 500
+  Sorted: YES
+
+Quick Sort:
+  Time: 2.0000 ms
+  Comparisons: 499500
+  Swaps: 250499
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: 0.50x (Quick Sort is 0.50x slower)
+
+
++============================================+
+|          SIZE: 5000 ELEMENTS              |
++============================================+
+
+=== Test Case: Random (Size: 5000) ===
+
+Selection Sort:
+  Time: 30.0000 ms
+  Comparisons: 12497500
+  Swaps: 4991
+  Sorted: YES
+
+Quick Sort:
+  Time: 0.0000 ms
+  Comparisons: 67866
+  Swaps: 36606
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: infx (Quick Sort is infx faster)
+
+=== Test Case: Best Case (Size: 5000) ===
+
+Selection Sort:
+  Time: 23.0000 ms
+  Comparisons: 12497500
+  Swaps: 0
+  Sorted: YES
+
+Quick Sort:
+  Time: 43.0000 ms
+  Comparisons: 12497500
+  Swaps: 12502499
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: 0.53x (Quick Sort is 0.53x slower)
+
+=== Test Case: Worst Case (Size: 5000) ===
+
+Selection Sort:
+  Time: 24.0000 ms
+  Comparisons: 12497500
+  Swaps: 2500
+  Sorted: YES
+
+Quick Sort:
+  Time: 39.0000 ms
+  Comparisons: 12497500
+  Swaps: 6252499
+  Sorted: YES
+
+Performance Analysis:
+  Speedup: 0.62x (Quick Sort is 0.62x slower)
+
+
++============================================+
+|        DETAILED COMPARISON TEST           |
++============================================+
+
+Original Array:
+[59, 48, 4, 43, 78, 7, 15, 51, 34, 50, ... (total 50 elements)]
+
+After Selection Sort:
+[0, 3, 3, 4, 4, 7, 10, 11, 12, 15, ... (total 50 elements)]
+Comparisons: 1225, Swaps: 44
+
+After Quick Sort:
+[0, 3, 3, 4, 4, 7, 10, 11, 12, 15, ... (total 50 elements)]
+Comparisons: 227, Swaps: 113
+
+
++============================================+
+|           SUMMARY & CONCLUSIONS           |
++============================================+
+
+Selection Sort:
+  - Predictable O(n┬▓) performance
+  - Works well on small datasets
+  - Minimal extra space needed
+  - Better for memory-constrained systems
+
+Quick Sort:
+  - Average O(n log n) performance
+  - Much faster on large datasets
+  - Worst case O(n┬▓) with poor pivot selection
+  - Industry standard for general-purpose sorting
+
+Recommendation:
+  Use Quick Sort for better average performance.
+  Use Selection Sort for educational purposes or very small arrays.

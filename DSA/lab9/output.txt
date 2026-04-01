@@ -1,0 +1,128 @@
+====================================
+EXPERIMENT 9: STACK
+====================================
+AIM: Validate the correctness of
+parenthesis using Stack
+
+User Input: ({[]})
+
+Validating string: "({[]})"
+String length: 6
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character '{' -> PUSH to stack. Stack top: '{'
+  Step 3: Character '[' -> PUSH to stack. Stack top: '['
+  Step 4: Character ']' -> POP from stack (got '['). Brackets match: '[' with ']'
+  Step 5: Character '}' -> POP from stack (got '{'). Brackets match: '{' with '}'
+  Step 6: Character ')' -> POP from stack (got '('). Brackets match: '(' with ')'
+
+Final stack status: EMPTY (Valid)
+
+====================================
+RESULT: VALID
+====================================
+
+
+====================================
+ADDITIONAL TEST CASES:
+====================================
+
+Validating string: "()"
+String length: 2
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character ')' -> POP from stack (got '('). Brackets match: '(' with ')'
+
+Final stack status: EMPTY (Valid)
+
+Test 1: "()" -> VALID
+
+Validating string: "()[]{}"
+String length: 6
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character ')' -> POP from stack (got '('). Brackets match: '(' with ')'
+  Step 3: Character '[' -> PUSH to stack. Stack top: '['
+  Step 4: Character ']' -> POP from stack (got '['). Brackets match: '[' with ']'
+  Step 5: Character '{' -> PUSH to stack. Stack top: '{'
+  Step 6: Character '}' -> POP from stack (got '{'). Brackets match: '{' with '}'
+
+Final stack status: EMPTY (Valid)
+
+Test 2: "()[]{}" -> VALID
+
+Validating string: "(]"
+String length: 2
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character ']' -> POP from stack (got '('). ERROR: Brackets don't match! '(' with ']'
+
+Test 3: "(]" -> INVALID
+
+Validating string: "([])"
+String length: 4
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character '[' -> PUSH to stack. Stack top: '['
+  Step 3: Character ']' -> POP from stack (got '['). Brackets match: '[' with ']'
+  Step 4: Character ')' -> POP from stack (got '('). Brackets match: '(' with ')'
+
+Final stack status: EMPTY (Valid)
+
+Test 4: "([])" -> VALID
+
+Validating string: "{[()]}"
+String length: 6
+
+Processing characters:
+  Step 1: Character '{' -> PUSH to stack. Stack top: '{'
+  Step 2: Character '[' -> PUSH to stack. Stack top: '['
+  Step 3: Character '(' -> PUSH to stack. Stack top: '('
+  Step 4: Character ')' -> POP from stack (got '('). Brackets match: '(' with ')'
+  Step 5: Character ']' -> POP from stack (got '['). Brackets match: '[' with ']'
+  Step 6: Character '}' -> POP from stack (got '{'). Brackets match: '{' with '}'
+
+Final stack status: EMPTY (Valid)
+
+Test 5: "{[()]}" -> VALID
+
+Validating string: "((("
+String length: 3
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character '(' -> PUSH to stack. Stack top: '('
+  Step 3: Character '(' -> PUSH to stack. Stack top: '('
+
+Final stack status: NOT EMPTY (Invalid)
+
+Test 6: "(((" -> INVALID
+
+Validating string: ")))"
+String length: 3
+
+Processing characters:
+  Step 1: Character ')' -> ERROR: No matching opening bracket!
+
+Test 7: ")))" -> INVALID
+
+Validating string: "([)]"
+String length: 4
+
+Processing characters:
+  Step 1: Character '(' -> PUSH to stack. Stack top: '('
+  Step 2: Character '[' -> PUSH to stack. Stack top: '['
+  Step 3: Character ')' -> POP from stack (got '['). ERROR: Brackets don't match! '[' with ')'
+
+Test 8: "([)]" -> INVALID
+
+====================================
+CONCLUSION:
+Correctness of parenthesis is
+performed using Stack successfully.
+====================================

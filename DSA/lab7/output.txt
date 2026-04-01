@@ -1,0 +1,46 @@
+====================================
+EXPERIMENT 7: HASHING
+====================================
+Hash Function: key mod 7
+Collision Resolution: Linear Probing
+
+
+--- Operation: INSERT ---
+
+Inserting key: 50, value: 500
+Initial hash index: 1
+  Trying index: 1 - INSERTED
+
+--- Operation: INSERT ---
+
+Inserting key: 700, value: 7000
+Initial hash index: 0
+  Trying index: 0 - INSERTED
+
+--- Operation: SEARCH ---
+
+Searching for key: 50
+Initial hash index: 1
+  Checking index: 1 - FOUND! Value: 500
+
+--- Operation: DISPLAY ---
+
+=== HASH TABLE CONTENTS ===
+Index | Key  | Value | Status
+------|------|-------|--------
+    0 |  700 |  7000 | Used
+    1 |   50 |   500 | Used
+    2 | ---- | ----- | Empty
+    3 | ---- | ----- | Empty
+    4 | ---- | ----- | Empty
+    5 | ---- | ----- | Empty
+    6 | ---- | ----- | Empty
+
+--- Operation: EXIT ---
+
+====================================
+CONCLUSION:
+Learnt the implementation of linear
+probing used for indexing values in
+hash tables for efficient storage.
+====================================
