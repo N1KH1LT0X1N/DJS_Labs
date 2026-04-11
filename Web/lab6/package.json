@@ -1,0 +1,13 @@
+{
+  "name": "lab6-nodejs-crud",
+  "version": "1.0.0",
+  "description": "Lab 6: Node.js CRUD Application with Custom Modules",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "hello": "node hello.js"
+  },
+  "keywords": ["nodejs", "crud", "fs-module", "custom-modules"],
+  "author": "",
+  "license": "ISC"
+}
