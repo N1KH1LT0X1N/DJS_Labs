@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+<students>
+    <student>
+        <id>S001</id>
+        <name>Nikhil Pise</name>
+        <branch>Computer Science</branch>
+        <marks>92</marks>
+    </student>
+    <student>
+        <id>S002</id>
+        <name>Aarav Kumar</name>
+        <branch>Electronics</branch>
+        <marks>85</marks>
+    </student>
+    <student>
+        <id>S003</id>
+        <name>Priya Sharma</name>
+        <branch>Mechanical</branch>
+        <marks>88</marks>
+    </student>
+    <student>
+        <id>S004</id>
+        <name>Rajesh Singh</name>
+        <branch>Civil</branch>
+        <marks>78</marks>
+    </student>
+    <student>
+        <id>S005</id>
+        <name>Anjali Verma</name>
+        <branch>Chemical</branch>
+        <marks>91</marks>
+    </student>
+    <student>
+        <id>S006</id>
+        <name>Vikram Patel</name>
+        <branch>Electrical</branch>
+        <marks>87</marks>
+    </student>
+</students>
